@@ -1,0 +1,27 @@
+{
+  "name": "PDF Chapter Splitter",
+  "short_name": "PDF Splitter",
+  "description": "Extract and split chapters from PDF documents. 100% client-side processing.",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#0f0d0a",
+  "theme_color": "#f0b650",
+  "icons": [
+    {
+      "src": "/image.png",
+      "sizes": "192x192",
+      "type": "image/png",
+      "purpose": "any maskable"
+    },
+    {
+      "src": "/image.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "any maskable"
+    }
+  ],
+  "categories": ["utilities", "productivity"],
+  "lang": "en",
+  "orientation": "any"
+}
+

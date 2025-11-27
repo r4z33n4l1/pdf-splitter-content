@@ -38,7 +38,7 @@
 
 ![PDF Chapter Splitter Screenshot](public/image2.png)
 
-Try it live: [pdfchaptersplitter.com](https://pdfchaptersplitter.com)
+Try it live: [pdfsplitter.filezap.dev](https://pdfsplitter.filezap.dev)
 
 ## 🚀 Installation
 

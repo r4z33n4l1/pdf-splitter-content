@@ -43,7 +43,7 @@ export const metadata: Metadata = {
   authors: [{ name: "Razeen Ali", url: "https://razeenali.com" }],
   creator: "Razeen Ali",
   publisher: "Razeen Ali",
-  metadataBase: new URL("https://pdfchaptersplitter.com"),
+  metadataBase: new URL("https://pdfsplitter.filezap.dev"),
   robots: {
     index: true,
     follow: true,
@@ -102,7 +102,7 @@ const jsonLd = {
   "@type": "WebApplication",
   name: "PDF Chapter Splitter",
   description: "Free online tool to split PDF by chapters and extract specific sections. 100% client-side processing for privacy.",
-  url: "https://pdfchaptersplitter.com",
+  url: "https://pdfsplitter.filezap.dev",
   applicationCategory: "UtilitiesApplication",
   operatingSystem: "Any",
   browserRequirements: "Requires JavaScript",
@@ -131,7 +131,7 @@ const jsonLd = {
     "Keyboard navigation support",
     "Auto-detect chapter structure",
   ],
-  screenshot: "https://pdfchaptersplitter.com/image2.png",
+  screenshot: "https://pdfsplitter.filezap.dev/image2.png",
   softwareVersion: "1.0.0",
 };
 

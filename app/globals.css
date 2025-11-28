@@ -469,9 +469,11 @@ body {
   }
   
   .shortcuts-panel {
-    order: -1;
-    width: 100% !important;
-    max-height: none !important;
+    display: none;
+  }
+  
+  .keyboard-hints-mobile {
+    display: flex !important;
   }
 }
 
@@ -1271,13 +1273,33 @@ body {
   .modal-with-sidebar {
     flex-direction: column;
     max-height: 90vh;
+    margin: 0.5rem;
+    width: calc(100% - 1rem);
   }
   
   .modal-sidebar {
-    max-height: 30vh !important;
-    width: 100% !important;
-    border-right: none !important;
-    border-bottom: 1px solid var(--border-subtle) !important;
+    display: none;
+  }
+  
+  .modal-content {
+    padding: 1rem !important;
+  }
+  
+  .modal-preview img {
+    max-height: 45vh !important;
+  }
+  
+  .modal-nav-btn {
+    width: 36px !important;
+    height: 36px !important;
+  }
+  
+  .modal-details h3 {
+    font-size: 1rem !important;
+  }
+  
+  .modal-keyboard-hint {
+    display: none !important;
   }
 }
 
@@ -1621,13 +1643,19 @@ body {
 }
 
 .footer-content {
-  max-width: 760px;
+  max-width: 900px;
   margin: 0 auto;
   display: flex;
   align-items: center;
   justify-content: space-between;
   flex-wrap: wrap;
   gap: 1rem;
+}
+
+.footer-left {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
 }
 
 .footer-attribution {
@@ -1678,22 +1706,143 @@ body {
   height: 18px;
 }
 
+.product-hunt-badge {
+  display: block;
+  flex-shrink: 0;
+  transition: transform var(--transition-fast), opacity var(--transition-fast);
+}
+
+.product-hunt-badge:hover {
+  transform: scale(1.02);
+  opacity: 0.9;
+}
+
+.product-hunt-badge img {
+  display: block;
+  width: 200px;
+  height: auto;
+}
+
 /* Responsive */
 @media (max-width: 640px) {
   .splitter-container {
-    padding: 1.5rem;
+    padding: 1rem;
   }
   
   .dropzone {
-    padding: 3rem 1.5rem;
+    padding: 2.5rem 1rem;
+  }
+  
+  .dropzone-shortcut {
+    display: none;
   }
   
   .chapters-list {
-    max-height: 40vh;
+    max-height: 50vh;
+  }
+  
+  .brand h1 {
+    font-size: 1.5rem;
+  }
+  
+  .brand p {
+    font-size: 0.875rem;
+  }
+  
+  .features {
+    grid-template-columns: 1fr;
+    gap: 0.75rem;
+  }
+  
+  .feature {
+    flex-direction: row;
+    text-align: left;
+    gap: 0.75rem;
+    padding: 0.75rem;
+  }
+  
+  .feature-icon {
+    width: 36px;
+    height: 36px;
+    flex-shrink: 0;
+  }
+  
+  .suggestions {
+    padding: 1rem;
+  }
+  
+  .suggestions ul {
+    gap: 0.5rem;
+  }
+  
+  .footer {
+    padding: 1rem;
   }
   
   .footer-content {
-    justify-content: center;
+    flex-direction: column;
+    align-items: center;
     text-align: center;
+    gap: 1rem;
+  }
+  
+  .footer-left {
+    align-items: center;
+  }
+  
+  .product-hunt-badge img {
+    width: 180px;
+  }
+  
+  .download-actions {
+    flex-direction: column;
+  }
+  
+  .download-button {
+    width: 100%;
+    justify-content: center;
+  }
+  
+  .chapter-button {
+    padding: 0.75rem !important;
+  }
+  
+  .chapter-thumbnail {
+    width: 36px;
+    height: 48px;
+  }
+  
+  .chapter-info {
+    gap: 0.125rem;
+  }
+  
+  .chapter-title {
+    font-size: 0.8125rem;
+  }
+  
+  .chapter-meta {
+    font-size: 0.6875rem;
+  }
+  
+  .chapters-header {
+    flex-wrap: wrap;
+    gap: 0.75rem;
+  }
+  
+  .file-info h2 {
+    font-size: 1rem;
+  }
+  
+  .selection-controls {
+    flex-wrap: wrap;
+    gap: 0.5rem;
+  }
+  
+  .view-toggle {
+    flex-direction: column;
+  }
+  
+  .view-toggle-btn {
+    justify-content: center;
   }
 }

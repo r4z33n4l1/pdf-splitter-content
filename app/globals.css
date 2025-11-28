@@ -1270,11 +1270,18 @@ body {
 }
 
 @media (max-width: 768px) {
+  .modal-overlay {
+    padding: 0 !important;
+  }
+  
   .modal-with-sidebar {
     flex-direction: column;
-    max-height: 90vh;
-    margin: 0.5rem;
-    width: calc(100% - 1rem);
+    max-height: 100vh;
+    height: 100vh;
+    margin: 0;
+    width: 100%;
+    border-radius: 0;
+    border: none;
   }
   
   .modal-sidebar {
@@ -1282,24 +1289,79 @@ body {
   }
   
   .modal-content {
-    padding: 1rem !important;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+  }
+  
+  .modal-nav-header {
+    padding: 0.75rem 1rem;
+    flex-shrink: 0;
+  }
+  
+  .modal-preview-container {
+    flex: 1;
+    padding: 0.5rem;
+    min-height: 0;
+    display: flex;
+    align-items: stretch;
+  }
+  
+  .modal-preview {
+    flex: 1;
+    max-height: none !important;
+    aspect-ratio: auto;
+    border-radius: var(--radius-sm);
   }
   
   .modal-preview img {
-    max-height: 45vh !important;
+    max-height: 100% !important;
+    width: 100%;
+    object-fit: contain;
   }
   
   .modal-nav-btn {
-    width: 36px !important;
-    height: 36px !important;
+    width: 40px !important;
+    height: 40px !important;
+    flex-shrink: 0;
+    align-self: center;
+  }
+  
+  .modal-nav-btn svg {
+    width: 18px;
+    height: 18px;
+  }
+  
+  .modal-details {
+    padding: 1rem !important;
+    flex-shrink: 0;
+    background: var(--bg-tertiary);
+    border-top: 1px solid var(--border-subtle);
   }
   
   .modal-details h3 {
-    font-size: 1rem !important;
+    font-size: 0.9375rem !important;
+    margin-bottom: 0.125rem !important;
+  }
+  
+  .modal-details > p {
+    font-size: 0.75rem !important;
+    margin-bottom: 0.75rem !important;
+  }
+  
+  .modal-select-btn {
+    padding: 0.75rem !important;
+    font-size: 0.875rem !important;
+    margin-bottom: 0 !important;
   }
   
   .modal-keyboard-hint {
     display: none !important;
+  }
+  
+  .modal-close {
+    width: 36px;
+    height: 36px;
   }
 }
 
@@ -1633,6 +1695,20 @@ body {
   font-size: 0.6875rem;
   color: var(--text-secondary);
   box-shadow: 0 1px 0 var(--border-medium);
+}
+
+.modal-swipe-hint {
+  display: none;
+  text-align: center;
+  font-size: 0.75rem;
+  color: var(--text-muted);
+  margin: 0.5rem 0 0 0;
+}
+
+@media (max-width: 768px) {
+  .modal-swipe-hint {
+    display: block;
+  }
 }
 
 /* Footer */

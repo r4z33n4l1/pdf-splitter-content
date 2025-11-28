@@ -214,6 +214,8 @@ function PreviewModal({
   const pageCount = chapter.endPage - chapter.startPage + 1;
   const modalRef = useRef<HTMLDivElement>(null);
   const treeRef = useRef<HTMLDivElement>(null);
+  const touchStartX = useRef<number>(0);
+  const touchStartY = useRef<number>(0);
   
   // Handle keyboard navigation
   useEffect(() => {
@@ -247,6 +249,28 @@ function PreviewModal({
     
     return () => window.removeEventListener('keydown', handleKeyDown);
   }, [onClose, onPrevious, onNext, onSelect, hasPrevious, hasNext]);
+
+  // Handle touch swipe for mobile navigation
+  const handleTouchStart = useCallback((e: React.TouchEvent) => {
+    touchStartX.current = e.touches[0].clientX;
+    touchStartY.current = e.touches[0].clientY;
+  }, []);
+
+  const handleTouchEnd = useCallback((e: React.TouchEvent) => {
+    const touchEndX = e.changedTouches[0].clientX;
+    const touchEndY = e.changedTouches[0].clientY;
+    const deltaX = touchEndX - touchStartX.current;
+    const deltaY = touchEndY - touchStartY.current;
+    
+    // Only trigger if horizontal swipe is more significant than vertical
+    if (Math.abs(deltaX) > Math.abs(deltaY) && Math.abs(deltaX) > 50) {
+      if (deltaX > 0 && hasPrevious) {
+        onPrevious();
+      } else if (deltaX < 0 && hasNext) {
+        onNext();
+      }
+    }
+  }, [hasPrevious, hasNext, onPrevious, onNext]);
 
   // Scroll current item into view in tree
   useEffect(() => {
@@ -304,7 +328,11 @@ function PreviewModal({
             </button>
           </div>
           
-          <div className="modal-preview-container">
+          <div 
+            className="modal-preview-container"
+            onTouchStart={handleTouchStart}
+            onTouchEnd={handleTouchEnd}
+          >
             <button 
               className={`modal-nav-btn prev ${!hasPrevious ? 'disabled' : ''}`}
               onClick={(e) => { e.stopPropagation(); if (hasPrevious) onPrevious(); }}
@@ -318,7 +346,7 @@ function PreviewModal({
             
             <div className="modal-preview">
               {thumbnail ? (
-                <img src={thumbnail} alt={`Preview of ${chapter.title}`} />
+                <img src={thumbnail} alt={`Preview of ${chapter.title}`} draggable={false} />
               ) : (
                 <div className="modal-no-preview">
                   <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5">
@@ -366,6 +394,9 @@ function PreviewModal({
             </button>
             <p className="modal-keyboard-hint">
               <kbd>←</kbd> <kbd>→</kbd> navigate • <kbd>Space</kbd> select • <kbd>Esc</kbd> close
+            </p>
+            <p className="modal-swipe-hint">
+              Swipe left/right to navigate
             </p>
           </div>
         </div>
